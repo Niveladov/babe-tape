@@ -28,11 +28,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of items">
+            <tr [class.isredrow]="item.done" *ngFor="let item of items">
                 <td>{{item.purchase}}</td>
                 <td>{{item.price}}</td>
                 <td><input type="checkbox" [(ngModel)]="item.done" /></td>
             </tr>
         </tbody>
     </table>
+    <child-comp [rowText]="text"><h2>Ну что ты пишешь? {{text}}?</h2></child-comp>
 </div>
