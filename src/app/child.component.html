@@ -1,0 +1,7 @@
+<P>А вот что: {{rowText}}!</P>
+<ng-content></ng-content>
+<button (click)="change(true)">+</button>
+<button (click)="change(false)">-</button>
+<br/>
+<input [ngModel]="userName" (ngModelChange)="onNameChanged($event)" />
+<P>Имя вот: {{userName}}!</P>

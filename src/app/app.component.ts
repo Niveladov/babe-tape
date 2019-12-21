@@ -18,7 +18,9 @@ class Item{
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
+
 export class AppComponent { 
+    clicks:number = 0;
     name: string = 'Женёк';
     items: Item[] = 
     [
@@ -32,5 +34,12 @@ export class AppComponent {
         if(text==null || text.trim()=="" || price==null)
             return;
         this.items.push(new Item(text, price));
+    }
+    nuChanged(increased: boolean){
+        increased == true ? this.clicks++ : this.clicks--;
+    }
+    nameChanged(name: string)
+    {
+        this.name = name;
     }
 }

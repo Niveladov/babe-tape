@@ -1,27 +1,36 @@
-import { Input, Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core'; 
       
 @Component({
     selector: 'child-comp',
-    template: `<ng-content></ng-content>
-               <P>А вот что: {{rowText}}!</P>`,
+    templateUrl: './child.component.html',
     styleUrls: ['./app.component.css']
 })
 export class ChildComponent { 
     private _rowText: string = "Даровки";
-
-    @Input() set rowText(text:string)
+    @Input() set rowText(text: string)
     {
-        if (text == "Привет!")
+        if (text == "Привет")
         {
-            this._rowText = "Хуй те, а ни привет!"
+            this._rowText = "Буфет"
         }
         else
         {
             this._rowText = text;
         }
     };
-
     get rowText(){
         return this._rowText;
     };
+    @Input() public userName:string;
+    @Output() public userNameChanged = new EventEmitter<string>();
+    @Output() public onChanged = new EventEmitter<boolean>();
+
+    change(increased: boolean) {
+        this.onChanged.emit(increased);
+    }    
+    onNameChanged(model: string){
+         
+        this.userName = model;
+        this.userNameChanged.emit(model);
+    }
 }

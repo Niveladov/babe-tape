@@ -35,5 +35,9 @@
             </tr>
         </tbody>
     </table>
-    <child-comp [rowText]="text"><h2>Ну что ты пишешь? {{text}}?</h2></child-comp>
+    <child-comp [rowText]="text" [userName]="name" (userNameChanged)="nameChanged($event)" (onChanged)="nuChanged($event)">
+        <h2>Ну что ты пишешь? {{text}}?</h2>
+        <h2>Чо по кликам, а? {{clicks}}</h2>
+    </child-comp>
+    <div>Вот такие пироги, {{name}}</div>
 </div>
